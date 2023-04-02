@@ -1,0 +1,32 @@
+.lakituPage {
+  background: url('../../images/marioKartStart.jpeg');
+  background-size: cover;
+  min-height: 100vh;
+  background-position: right;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .lakitu {
+    animation-name: example;
+    animation-duration: 2.75s;
+    position: absolute;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes example {
+    0% {
+      left: 10%;
+      top: 10%;
+    }
+    50% {
+      left: 10%;
+      top: 20%;
+    }
+    100% {
+      left: 10%;
+      top: 10%;
+    }
+  }
+}

@@ -1,0 +1,95 @@
+.tube {
+  //body
+  width: 400px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transition: all 2.5s;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    to right,
+    #579c66,
+    #579c66 5px,
+    #6dad7b 15px,
+    #e9ffe8 33px,
+    #9dd591 50px,
+    #6bb765 100px,
+    #142e16 100%
+  );
+
+  &::before {
+    //top border
+    transition: all 2.5s;
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: -10px;
+    height: 8px;
+    width: 420px; // 220px
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.1) 98%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+  }
+  &::after {
+    //tube's top
+    content: '';
+    transition: all 2.5s;
+    position: absolute;
+    left: -10px;
+    height: 100px;
+    width: 420px;
+    border-radius: 6px;
+    border-bottom: solid 7px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(
+      to right,
+      #579c66,
+      #579c66 5px,
+      #6dad7b 18px,
+      #e9ffe8 36px,
+      #9dd591 53px,
+      #6bb765 103px,
+      #142e16 100%
+    );
+  }
+
+  .coinQuestion {
+    position: absolute;
+    width: 400px;
+    z-index: 10;
+    opacity: 0;
+    transition-delay: 2s;
+    transition-property: opacity;
+    transition: ease-in all 2s;
+
+    .title {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .content {
+      padding: 1rem;
+    }
+  }
+}
+
+.tube.hidden {
+  height: 0px;
+  overflow: hidden;
+}
+
+.tube.expanded {
+  height: calc(100% - 5rem);
+
+  .coinQuestion {
+    opacity: 1;
+  }
+}

@@ -6,6 +6,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
 // styles
+import './styles/tube.scss';
 import './styles/globals.scss';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
