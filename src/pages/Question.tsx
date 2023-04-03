@@ -1,13 +1,14 @@
 // React
 import React, { FC, ReactNode, useState } from 'react';
 
-// React Router Dom
-import { useNavigate } from 'react-router-dom';
-
 // images
 import questionBlock from '../images/questionBlock.webp';
 import mushroom from '../images/mushroom.webp';
 import coin from '../images/coin.webp';
+
+// components
+import WrongAnswerModal from '../components/WrongAnswerModal';
+import CorrectAnswerModal from '../components/CorrectAnswerModal';
 
 // styles
 import '../styles/pages/Question.scss';
@@ -20,19 +21,19 @@ interface IProps {
 }
 
 const Question: FC<IProps> = ({ title, riddle, answer, next }) => {
-  const navigate = useNavigate();
-
   const [userInput, setUserInput] = useState('');
   const [showTube, setShowTube] = useState(false);
+  const [showWrongAnswer, setShowWrongAnswer] = useState(false);
+  const [showCorrectAnswerModal, setShowCorrectAnswerModal] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(userInput);
 
     if (userInput.toLowerCase() === answer) {
-      alert('Correct!');
-      setUserInput('');
-      navigate(next);
+      setShowCorrectAnswerModal(true);
+    } else {
+      setShowWrongAnswer(true);
     }
   };
 
@@ -70,6 +71,16 @@ const Question: FC<IProps> = ({ title, riddle, answer, next }) => {
           <p className="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, omnis.</p>
         </div>
       </div>
+      {showWrongAnswer && <WrongAnswerModal handleClose={() => setShowWrongAnswer(false)} />}
+      {showCorrectAnswerModal && (
+        <CorrectAnswerModal
+          next={next}
+          handleClose={() => {
+            setShowCorrectAnswerModal(false);
+            setUserInput('');
+          }}
+        />
+      )}
     </div>
   );
 };

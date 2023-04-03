@@ -1,0 +1,27 @@
+.wrongAnswerModal {
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  padding: 1.5rem;
+  padding-top: 5rem;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    color: #c3271c;
+  }
+
+  .bowserContainer {
+    margin-bottom: 1.5rem;
+
+    .bowser {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+  }
+}
