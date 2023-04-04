@@ -44,6 +44,7 @@ const Question: FC<IProps> = ({ title, riddle, answer, next, previousQuestion })
 
       if (!completedQuestions.includes(title)) {
         setCompletedQuestions([...completedQuestions, title]);
+        localStorage.setItem('completedQuestions', JSON.stringify([...completedQuestions, title]));
       }
     } else {
       setShowWrongAnswer(true);
