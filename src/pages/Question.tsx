@@ -1,5 +1,5 @@
 // React
-import React, { FC, ReactNode, useState, useContext } from 'react';
+import React, { FC, ReactNode, useState, useContext, useEffect } from 'react';
 
 // react-router-dom
 import { Navigate } from 'react-router-dom';
@@ -7,7 +7,6 @@ import { Navigate } from 'react-router-dom';
 // images
 import questionBlock from '../images/questionBlock.webp';
 import mushroom from '../images/mushroom.webp';
-import coin from '../images/coin.webp';
 
 // components
 import WrongAnswerModal from '../components/WrongAnswerModal';
@@ -23,17 +22,19 @@ interface IProps {
   title: string;
   riddle: ReactNode;
   answer: string;
+  hint: string;
   next: string;
   previousQuestion: string | null;
 }
 
-const Question: FC<IProps> = ({ title, riddle, answer, next, previousQuestion }) => {
+const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuestion }) => {
   const { completedQuestions, setCompletedQuestions } = useContext(AppContext);
 
   const [userInput, setUserInput] = useState('');
   const [showTube, setShowTube] = useState(false);
   const [showWrongAnswer, setShowWrongAnswer] = useState(false);
   const [showCorrectAnswerModal, setShowCorrectAnswerModal] = useState(false);
+  const [timeBeforeShowingHint, setTimeBeforeShowingHint] = useState(10);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,6 +52,24 @@ const Question: FC<IProps> = ({ title, riddle, answer, next, previousQuestion })
     }
   };
 
+  useEffect(() => {
+    setTimeBeforeShowingHint(10);
+
+    const countdown = setInterval(() => {
+      setTimeBeforeShowingHint((prev) => {
+        if (prev > 0) return prev - 1;
+        else {
+          clearInterval(countdown);
+          return 0;
+        }
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(countdown);
+    };
+  }, [title]);
+
   if (previousQuestion !== null && completedQuestions.includes(previousQuestion) === false) {
     return <Navigate to="/" replace />;
   }
@@ -59,8 +78,22 @@ const Question: FC<IProps> = ({ title, riddle, answer, next, previousQuestion })
     <div className="question">
       <div className="menuContainer">
         <img className="menuItem" height={60} width={60} src={mushroom} alt="Mushroom Menu" />
-        <img className="menuItem" height={60} width={60} src={coin} alt="coin" onClick={() => setShowTube(!showTube)} />
-        <img className="menuItem" height={60} width={60} src={questionBlock} alt="hint" />
+
+        {timeBeforeShowingHint > 0 ? (
+          <span>Hint Available in {timeBeforeShowingHint}</span>
+        ) : (
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{ marginRight: 10 }}>Hint</span>
+            <img
+              className="menuItem"
+              height={60}
+              width={60}
+              src={questionBlock}
+              alt="hint"
+              onClick={() => setShowTube(!showTube)}
+            />
+          </div>
+        )}
       </div>
 
       <div className="questionContainer">
@@ -85,8 +118,8 @@ const Question: FC<IProps> = ({ title, riddle, answer, next, previousQuestion })
 
       <div className={`tube ${showTube ? 'expanded' : 'hidden'}`}>
         <div className="coinQuestion">
-          <h2 className="title">Title Will Go Here</h2>
-          <p className="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, omnis.</p>
+          <h2 className="title">Hint</h2>
+          <p className="content">{hint}</p>
         </div>
       </div>
       {showWrongAnswer && <WrongAnswerModal handleClose={() => setShowWrongAnswer(false)} />}

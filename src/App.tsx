@@ -29,6 +29,7 @@ function App() {
               title="Question 1"
               riddle="How many carts are on the Grandscape ferris wheel? (enter a number)"
               answer="42"
+              hint="Here is a helpful hint."
               next="/question2"
               previousQuestion={null}
             />
@@ -42,6 +43,7 @@ function App() {
               title="Question 2"
               riddle="What color is a golden steed's saddle covering?"
               answer="red"
+              hint="Here is a helpful hint."
               next="/question3"
               previousQuestion="Question 1"
             />
@@ -55,6 +57,7 @@ function App() {
               title="Question 3"
               riddle="What name is below the Grandscape tower pool?"
               answer="1 fnbo plaza"
+              hint="Here is a helpful hint."
               next="/question4"
               previousQuestion="Question 2"
             />
@@ -68,6 +71,7 @@ function App() {
               title="Question 4"
               riddle="Which store has a desert mascot that is suspect for having the munchies?"
               answer="the baked bear"
+              hint="Here is a helpful hint."
               next="/question5"
               previousQuestion="Question 3"
             />
@@ -81,6 +85,7 @@ function App() {
               title="Question 5"
               riddle="What cinema is out of this world?"
               answer="galaxy theatres"
+              hint="Here is a helpful hint."
               next="/question6"
               previousQuestion="Question 4"
             />
@@ -94,6 +99,7 @@ function App() {
               title="Question 6"
               riddle="What type of fish habitat is in Grandscape?"
               answer="invisible"
+              hint="Here is a helpful hint."
               next="/question7"
               previousQuestion="Question 5"
             />
@@ -107,6 +113,7 @@ function App() {
               title="Question 7"
               riddle="Which building has painted walls of blue and a cowboy ridding into the sunset?"
               answer="the homestead"
+              hint="Here is a helpful hint."
               next="/question8"
               previousQuestion="Question 6"
             />
@@ -120,6 +127,7 @@ function App() {
               title="Question 8"
               riddle="How many sport figure came out to watch Pauline's show on the amphitheater stage? (enter a number)"
               answer="4"
+              hint="Here is a helpful hint."
               next="/question9"
               previousQuestion="Question 7"
             />
@@ -133,6 +141,7 @@ function App() {
               title="Question 9"
               riddle="What sits in front of the locked wall?"
               answer="bench"
+              hint="Here is a helpful hint."
               next="/question10"
               previousQuestion="Question 8"
             />
@@ -146,6 +155,7 @@ function App() {
               title="Question 10"
               riddle="What is 35ft tall, has 432 video tiles, and a one of a kind wind driven anemometer?"
               answer="the kaleidoscope"
+              hint="Here is a helpful hint."
               next="/question11"
               previousQuestion="Question 9"
             />
@@ -159,6 +169,7 @@ function App() {
               title="Question 11"
               riddle="What unusual red object is across the street and down stairs from the kaleidoscope?"
               answer="telephone booth"
+              hint="Here is a helpful hint."
               next="/question12"
               previousQuestion="Question 10"
             />
@@ -172,6 +183,7 @@ function App() {
               title="Question 12"
               riddle="The wall of rainbow flowers will lead you through a _____________"
               answer="tunnel"
+              hint="Here is a helpful hint."
               next="/finish"
               previousQuestion="Question 11"
             />
