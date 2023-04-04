@@ -1,5 +1,8 @@
 // React
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, ReactNode, useState, useContext } from 'react';
+
+// react-router-dom
+import { Navigate } from 'react-router-dom';
 
 // images
 import questionBlock from '../images/questionBlock.webp';
@@ -10,6 +13,9 @@ import coin from '../images/coin.webp';
 import WrongAnswerModal from '../components/WrongAnswerModal';
 import CorrectAnswerModal from '../components/CorrectAnswerModal';
 
+// Context
+import { AppContext } from '../context/AppContext';
+
 // styles
 import '../styles/pages/Question.scss';
 
@@ -18,9 +24,12 @@ interface IProps {
   riddle: ReactNode;
   answer: string;
   next: string;
+  previousQuestion: string | null;
 }
 
-const Question: FC<IProps> = ({ title, riddle, answer, next }) => {
+const Question: FC<IProps> = ({ title, riddle, answer, next, previousQuestion }) => {
+  const { completedQuestions, setCompletedQuestions } = useContext(AppContext);
+
   const [userInput, setUserInput] = useState('');
   const [showTube, setShowTube] = useState(false);
   const [showWrongAnswer, setShowWrongAnswer] = useState(false);
@@ -32,10 +41,18 @@ const Question: FC<IProps> = ({ title, riddle, answer, next }) => {
 
     if (userInput.toLowerCase() === answer) {
       setShowCorrectAnswerModal(true);
+
+      if (!completedQuestions.includes(title)) {
+        setCompletedQuestions([...completedQuestions, title]);
+      }
     } else {
       setShowWrongAnswer(true);
     }
   };
+
+  if (previousQuestion !== null && completedQuestions.includes(previousQuestion) === false) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="question">
