@@ -11,6 +11,7 @@ import mushroom from '../images/mushroom.webp';
 // components
 import WrongAnswerModal from '../components/WrongAnswerModal';
 import CorrectAnswerModal from '../components/CorrectAnswerModal';
+import InstructionsModal from '../components/InstructionsModal';
 
 // Context
 import { AppContext } from '../context/AppContext';
@@ -31,9 +32,11 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
   const { completedQuestions, setCompletedQuestions } = useContext(AppContext);
 
   const [userInput, setUserInput] = useState('');
+  const [showInstructions, setShowInstructions] = useState(false);
   const [showTube, setShowTube] = useState(false);
   const [showWrongAnswer, setShowWrongAnswer] = useState(false);
   const [showCorrectAnswerModal, setShowCorrectAnswerModal] = useState(false);
+
   const [timeBeforeShowingHint, setTimeBeforeShowingHint] = useState(10);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -77,17 +80,24 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
   return (
     <div className="question">
       <div className="menuContainer">
-        <img className="menuItem" height={60} width={60} src={mushroom} alt="Mushroom Menu" />
+        <img
+          className="menuItem"
+          height={50}
+          width={50}
+          src={mushroom}
+          alt="Mushroom Menu"
+          onClick={() => setShowInstructions(true)}
+        />
 
         {timeBeforeShowingHint > 0 ? (
           <span>Hint Available in {timeBeforeShowingHint}</span>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{ marginRight: 10 }}>Hint</span>
+          <div className="hintContainer">
+            <span>Hint</span>
             <img
               className="menuItem"
-              height={60}
-              width={60}
+              height={50}
+              width={50}
               src={questionBlock}
               alt="hint"
               onClick={() => setShowTube(!showTube)}
@@ -97,7 +107,7 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
       </div>
 
       <div className="questionContainer">
-        <h2>{title}</h2>
+        <h2>{title} of 14</h2>
         <p>{riddle}</p>
         <form onSubmit={handleSubmit} className="answerContainer">
           <div className="inputContainer">
@@ -120,8 +130,12 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
         <div className="coinQuestion">
           <h2 className="title">Hint</h2>
           <p className="content">{hint}</p>
+          <button className="btn" onClick={() => setShowTube(false)}>
+            Close
+          </button>
         </div>
       </div>
+      {showInstructions && <InstructionsModal handleClose={() => setShowInstructions(false)} />}
       {showWrongAnswer && <WrongAnswerModal handleClose={() => setShowWrongAnswer(false)} />}
       {showCorrectAnswerModal && (
         <CorrectAnswerModal

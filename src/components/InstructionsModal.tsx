@@ -1,12 +1,16 @@
-// React Router Dom
-import { Link } from 'react-router-dom';
+// React
+import { FC } from 'react';
 
-// Styles
-import '../styles/pages/Instructions.scss';
+// styles
+import '../styles/components/InstructionsModal.scss';
 
-const Instructions = () => {
+interface IProps {
+  handleClose: () => void;
+}
+
+const InstructionsModal: FC<IProps> = ({ handleClose }) => {
   return (
-    <div className="instructions">
+    <div className="instructionsModal">
       <div className="instructionsContainer">
         <h1>Instructions</h1>
         <ul>
@@ -18,9 +22,9 @@ const Instructions = () => {
           </li>
           <li>If you need to review these rules, just click on the mushroom icon on the top left.</li>
           <div className="btnContainer">
-            <Link to="/lakitu" className="btn">
-              Ok
-            </Link>
+            <button className="btn" onClick={handleClose}>
+              OK
+            </button>
           </div>
         </ul>
       </div>
@@ -28,4 +32,4 @@ const Instructions = () => {
   );
 };
 
-export default Instructions;
+export default InstructionsModal;

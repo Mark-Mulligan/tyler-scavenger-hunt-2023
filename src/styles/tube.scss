@@ -1,6 +1,7 @@
 .tube {
   //body
-  width: 400px;
+  width: calc(100% - 20px);
+  max-width: 400px;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -26,7 +27,9 @@
     z-index: 1;
     left: -10px;
     height: 8px;
-    width: 420px; // 220px
+    width: calc(100% + 20px);
+    max-width: 420px;
+    // width: 420px; // 220px
     border-radius: 6px 6px 0 0;
     background: linear-gradient(
       to bottom,
@@ -42,7 +45,9 @@
     position: absolute;
     left: -10px;
     height: 100px;
-    width: 420px;
+    width: calc(100% + 20px);
+    max-width: 430px;
+
     border-radius: 6px;
     border-bottom: solid 7px rgba(0, 0, 0, 0.4);
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
@@ -60,7 +65,8 @@
 
   .coinQuestion {
     position: absolute;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     z-index: 10;
     opacity: 0;
     transition-delay: 2s;
@@ -87,7 +93,7 @@
 }
 
 .tube.expanded {
-  height: calc(100% - 5rem);
+  height: calc(100% - 4.35rem);
 
   .coinQuestion {
     opacity: 1;
