@@ -11,7 +11,7 @@ const Lakitu = () => {
   return (
     <div className="lakituPage">
       <img className="lakitu" src={lakitu} alt="lakitu" height={220} width={200} />
-      <Link to="/question1" className="btn">
+      <Link to="/question1" className="btn goBtn">
         GO!
       </Link>
     </div>

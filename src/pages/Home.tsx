@@ -17,7 +17,7 @@ const Home = () => {
         LET&apos;S GO!
       </Link>
 
-      <img src={mario} alt="Mario" />
+      <img className="mario" src={mario} alt="Mario" />
     </div>
   );
 };

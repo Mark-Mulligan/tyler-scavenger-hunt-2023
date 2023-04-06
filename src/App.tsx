@@ -11,6 +11,7 @@ import Lakitu from './pages/Lakitu';
 import NoMatch from './pages/NoMatch';
 import Question from './pages/Question';
 import PictureTime from './pages/PictureTime';
+import Finish from './pages/Finish';
 
 // Context
 import { AppContextProvider } from './context/AppContext';
@@ -220,6 +221,8 @@ function App() {
             />
           }
         />
+
+        <Route path="/finish" element={<Finish />} />
 
         <Route path="*" element={<NoMatch />} />
       </Routes>

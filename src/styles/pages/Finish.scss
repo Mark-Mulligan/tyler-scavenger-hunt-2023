@@ -1,0 +1,11 @@
+.finish {
+  background: url('../../images/finish.jpg');
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: top left;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

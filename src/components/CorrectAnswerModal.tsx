@@ -24,7 +24,7 @@ const CorrectAnswerModal: FC<IProps> = ({ next, handleClose }) => {
 
       <h1 className="secondaryFont">WAHOO!</h1>
       <Link className="btn" to={next} onClick={handleClose}>
-        Next Question
+        {next === '/finish' ? 'Next' : 'Next Question'}
       </Link>
     </div>
   );
