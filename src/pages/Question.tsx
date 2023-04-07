@@ -4,6 +4,9 @@ import React, { FC, ReactNode, useState, useContext, useEffect } from 'react';
 // react-router-dom
 import { Navigate } from 'react-router-dom';
 
+// react-scroll
+import { animateScroll } from 'react-scroll';
+
 // images
 import questionBlock from '../images/questionBlock.webp';
 import mushroom from '../images/mushroom.webp';
@@ -41,7 +44,7 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(userInput);
+    animateScroll.scrollToTop();
 
     if (userInput.toLowerCase() === answer) {
       setShowCorrectAnswerModal(true);
