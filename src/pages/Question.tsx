@@ -44,7 +44,7 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    animateScroll.scrollToTop();
+    animateScroll.scrollToTop({ delay: 0, duration: 100 });
 
     if (userInput.toLowerCase() === answer) {
       setShowCorrectAnswerModal(true);
@@ -96,7 +96,6 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
           <span>Hint Available in {timeBeforeShowingHint}</span>
         ) : (
           <div className="hintContainer">
-            <span>Hint</span>
             <img
               className="menuItem"
               height={50}
