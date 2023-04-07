@@ -12,7 +12,7 @@ const Lakitu = () => {
     <div className="lakituPage">
       <img className="lakitu" src={lakitu} alt="lakitu" height={176} width={160} />
       <Link to="/question1" className="btn goBtn">
-        GO!
+        HERE WE GO!
       </Link>
     </div>
   );
