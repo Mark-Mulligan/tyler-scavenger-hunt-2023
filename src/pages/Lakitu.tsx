@@ -10,7 +10,7 @@ import '../styles/pages/Lakitu.scss';
 const Lakitu = () => {
   return (
     <div className="lakituPage">
-      <img className="lakitu" src={lakitu} alt="lakitu" height={220} width={200} />
+      <img className="lakitu" src={lakitu} alt="lakitu" height={176} width={160} />
       <Link to="/question1" className="btn goBtn">
         GO!
       </Link>
