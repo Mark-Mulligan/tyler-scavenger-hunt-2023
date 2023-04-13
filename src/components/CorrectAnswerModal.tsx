@@ -13,9 +13,10 @@ import '../styles/components/CorrectAnswerModal.scss';
 interface IProps {
   next: string;
   handleClose: () => void;
+  finalQuestion?: boolean;
 }
 
-const CorrectAnswerModal: FC<IProps> = ({ next, handleClose }) => {
+const CorrectAnswerModal: FC<IProps> = ({ next, handleClose, finalQuestion }) => {
   return (
     <div className="correctAnswerModal">
       <div className="marioAndLuigiContainer">
@@ -23,6 +24,11 @@ const CorrectAnswerModal: FC<IProps> = ({ next, handleClose }) => {
       </div>
 
       <h1 className="secondaryFont">WAHOO!</h1>
+      {finalQuestion && (
+        <p className="secondaryFont instructionsText">
+          GO TO <br /> THE TRUCK YARD
+        </p>
+      )}
       <Link className="btn" to={next} onClick={handleClose}>
         {next === '/finish' ? 'Next' : 'Next Question'}
       </Link>

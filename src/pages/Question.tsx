@@ -25,7 +25,7 @@ import '../styles/pages/Question.scss';
 interface IProps {
   title: string;
   riddle: ReactNode;
-  answer: string;
+  answer: string[];
   hint: string;
   next: string;
   previousQuestion: string | null;
@@ -40,13 +40,13 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
   const [showWrongAnswer, setShowWrongAnswer] = useState(false);
   const [showCorrectAnswerModal, setShowCorrectAnswerModal] = useState(false);
 
-  const [timeBeforeShowingHint, setTimeBeforeShowingHint] = useState(10);
+  const [timeBeforeShowingHint, setTimeBeforeShowingHint] = useState(120);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     animateScroll.scrollToTop({ delay: 0, duration: 100 });
 
-    if (userInput.toLowerCase() === answer) {
+    if (answer.includes(userInput.toLowerCase().trim())) {
       setShowCorrectAnswerModal(true);
 
       if (!completedQuestions.includes(title)) {
@@ -59,7 +59,7 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
   };
 
   useEffect(() => {
-    setTimeBeforeShowingHint(10);
+    setTimeBeforeShowingHint(120);
 
     const countdown = setInterval(() => {
       setTimeBeforeShowingHint((prev) => {
@@ -146,6 +146,7 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
             setShowCorrectAnswerModal(false);
             setUserInput('');
           }}
+          finalQuestion={title === 'Question 14'}
         />
       )}
     </div>

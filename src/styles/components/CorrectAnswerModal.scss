@@ -11,7 +11,7 @@
 
   h1 {
     margin-bottom: 1rem;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     color: white;
   }
 
@@ -20,8 +20,14 @@
 
     .marioAndLuigi {
       width: 100%;
-      max-width: 300px;
+      max-width: 240px;
       height: auto;
     }
+  }
+
+  .instructionsText {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
   }
 }
