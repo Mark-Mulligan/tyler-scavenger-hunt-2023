@@ -71,7 +71,7 @@ function App() {
           element={
             <Question
               title="Question 4"
-              riddle="Which store has a desert mascot that is suspect for having the munchies?"
+              riddle="Which store has a dessert mascot that is suspect for having the munchies?"
               answer={['the baked bear', 'baked bear']}
               hint="Could be bordering sherbet land"
               next="/question5"

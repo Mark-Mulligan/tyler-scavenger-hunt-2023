@@ -76,6 +76,10 @@ const Question: FC<IProps> = ({ title, riddle, answer, hint, next, previousQuest
     };
   }, [title]);
 
+  useEffect(() => {
+    animateScroll.scrollToTop({ delay: 0, duration: 100 });
+  }, []);
+
   if (previousQuestion !== null && completedQuestions.includes(previousQuestion) === false) {
     return <Navigate to="/" replace />;
   }
